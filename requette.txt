@@ -1,0 +1,1 @@
+SELECT commande.id, `date`,client.nom,client.prenom, article.nom,`quantite` FROM `commande`,client,article WHERE client.idclient=commande.client AND article.nom=commande.Article
