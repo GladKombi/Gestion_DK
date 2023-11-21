@@ -1,14 +1,12 @@
 <?php 
 include '../connexion/connexion.php';//Se connecter à la BD
 include 'index.php';
-if (isset($_GET['idbout']))
-{
- $id=$_GET['idbout'];
- $req=$connexion->query("SELECT * FROM `utilisateur` WHERE id=$id");
- $tab=$req->fetch();
-}
 ?>
 
+
+
+  <!-- CSS Files -->
+>
 </head>
 
 <main id="main" class="main">
@@ -16,16 +14,13 @@ if (isset($_GET['idbout']))
   <div class="min-height-300 bg-primary position-absolute w-100"></div>
 
   <main class="main-content position-relative border-radius-lg ">
-  <div class="container-fluid py-4">
-        <div class="row">
-       
-
+ 
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title text-center">AJouter une Boutique </h4>
+                        <h4 class="card-title text-center">Enregistrement paiement </h4>
                         <div class="modal modal-signin position-static d-block  py-1" tabindex="-1" role="dialog"
                                 id="modalSignin">
                             <div class="modal-dialog" role="document">
@@ -37,22 +32,24 @@ if (isset($_GET['idbout']))
                                     <form class="row g-3 needs-validation" method="POST" novalidate>
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control rounded-4" id="floatingInput"
-                                                        required name="nom">
-                                            <label for="floatingInput">Nom</label>
-                                        </div>
-                                        <div class="form-floating mb-2">
-                                            <input type="text" class="form-control rounded-4" id="floatingInput"
                                                         required name="description">
                                             <label for="floatingInput">Description</label>
                                         </div>
 
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control rounded-4" id="floatingInput"
-                                                        required name="adresse">
-                                            <label for="floatingInput">Adresse</label>
+                                                        required name="description">
+                                            <label for="floatingInput">Montant</label>
                                         </div>
 
-
+                                        <div class="form-floating mb-2">
+                                            
+                                            
+                                            <select class="form-control rounded-4" name="" id="floatingInput" required name="description">
+                                        
+                                        </select>
+                                        <label for="floatingInput">Commande</label>
+                                        </div>
                                         <p class="text-success text-center">
                                             
 
@@ -76,44 +73,28 @@ if (isset($_GET['idbout']))
                 </div>
             </div>
 
-
                 </div>
 
                 <div class="col-lg-7">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center ">Listes des Boutique</h5>
+                            <h5 class="card-title text-center ">Listes Payement</h5>
                             <table class="table datatable">
                                 <thead>
                                     <tr>
                                         <th scope="col">N°</th>
-                                        <th scope="col">Nom</th>
+                                        <th scope="col">Dates</th>
                                         <th scope="col">Description</th>
-                                        <th scope="col">Adresse</th>
+                                        <th scope="col">Montant</th>
+                                        <th scope="col">Commande</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                $n=0;
-                                $req=$connexion->query("SELECT * from boutique");
-                                while($bout=$req->fetch()){
-                                    $n++;
-                                ?>
-                            <tr>
-                                <th scope="row"><?= $n;?></th>
-                                <td> <?= $bout["nom"] ?></td> 
-                                <td> <?= $bout["description"] ?></td>
-                                <td> <?= $bout["adresse"] ?></td>
-                                <td><a href='boutique.php?edit_boutique=<?=$bout['id'] ?>' class='text-primary'><i class='bi-solid bi bi-pencil-square text-primary'></i></a>
-                                <a href='boutique.php?delete_boutique=<?=$bout['id'] ?>' type="button" 
-                                class="text-primary">
-                                <i class='bi-solid bi bi-trash text-primary'></i></a></td>                       
-                                                            </tr>                
-                                                            <?php
-                                                              }
-                                                              ?>
-                               
-                                </tbody>
+
+                              
+                                    <tr>
+                                      
+                                    </tr>
 
                                
                                 </tbody>

@@ -20,7 +20,7 @@ include 'index.php';
             <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Approvisionement </h4>
+                        <h4 class="card-title text-center">Paiement Dettes </h4>
                         <div class="modal modal-signin position-static d-block  py-1" tabindex="-1" role="dialog"
                                 id="modalSignin">
                             <div class="modal-dialog" role="document">
@@ -33,12 +33,13 @@ include 'index.php';
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control rounded-4" id="floatingInput"
                                                         required name="description">
-                                            <label for="floatingInput">Nom</label>
+                                            <label for="floatingInput">Description</label>
                                         </div>
+
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control rounded-4" id="floatingInput"
                                                         required name="description">
-                                            <label for="floatingInput">Prix</label>
+                                            <label for="floatingInput">Montant</label>
                                         </div>
 
                                         <div class="form-floating mb-2">
@@ -47,10 +48,8 @@ include 'index.php';
                                             <select class="form-control rounded-4" name="" id="floatingInput" required name="description">
                                         
                                         </select>
-                                        <label for="floatingInput">Description</label>
+                                        <label for="floatingInput">Dettes</label>
                                         </div>
-
-
                                         <p class="text-success text-center">
                                             
 
@@ -79,14 +78,15 @@ include 'index.php';
                 <div class="col-lg-7">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center ">Listes d'Approvisionnemlent</h5>
+                            <h5 class="card-title text-center "> Liste Paiement Dettes</h5>
                             <table class="table datatable">
                                 <thead>
                                     <tr>
                                         <th scope="col">N°</th>
-                                        <th scope="col">Nom</th>
-                                        <th scope="col">Prix</th>
-                                        <th scope="col">Catégorie</th>
+                                        <th scope="col">Dates</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Montant</th>
+                                        <th scope="col">Dettes</th>
                                     </tr>
                                 </thead>
                                 <tbody>

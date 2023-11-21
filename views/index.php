@@ -110,41 +110,45 @@ include '../connexion/connexion.php';//Se connecter à la BD
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="entre.php">
+                <a class="nav-link collapsed" href="approvisionnemet.php">
               
                     <i class="bi bi-house-door"></i>
-                    <span> Liste Entre</span>
+                    <span> Liste Approvisionnemet</span>
                 </a>
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="stock.php">
                     <i class="bi bi-person-circle"></i>
-                    <span> Liste  Clients</span>
+                    <span> Liste  Stock</span>
                 </a>
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed"  href="">
+                <a class="nav-link collapsed"  href="users.php">
         
                     <i class="bi bi-chevron-double-right"></i>
-                    <span> Liste  Fournisseurs</span>
+                    <span> Liste  Utilisateurs</span>
                 </a>
             </li>
 
             <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Mouvements</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>General Tables</span>
+            <a href="dettes.php">
+              <i class="bi bi-circle"></i><span>Dettes</span>
+            </a>
+          </li>
+          <a href="dettepaie.php">
+              <i class="bi bi-circle"></i><span>Paiement_Dettes</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
-              <i class="bi bi-circle"></i><span>Data Tables</span>
+            <a href="paiement.php">
+              <i class="bi bi-circle"></i><span>Paiements</span>
             </a>
           </li>
         </ul>

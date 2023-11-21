@@ -12,31 +12,37 @@ include 'index.php';
                     <div class="modal-body p-3">
                         <form class="row g-3 rounded-4 needs-validation shadow p-3" method="POST" novalidate style="background: #FFFFFF;">
                             <div class="row">
-                            <h4 class="card-title text-center">AJouter un Client </h4>
-                          
-                               <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
-                                <label for="">Nom <span class="text-danger">*</span></label>
+                            <h4 class="card-title text-center">Approvisionnement </h4>
+                              
+                              <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
+                                <label for="">Description <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required placeholder="Entrer...">
                               </div>
                               <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
-                                <label for="">Postnom <span class="text-danger">*</span></label>
+                                <label for="">Quantite<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required placeholder="Entrer...">
                               </div>
                               <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
-                                <label for="">Prenom<span class="text-danger">*</span></label>
+                                <label for="">Prix Unitaire<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required placeholder="Entrer...">
                               </div>
                               <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
-                                <label for="">Genre<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required placeholder="Entrer...">
+                                <label for="">Stock Géneral<span class="text-danger">*</span></label>
+                                <select class="form-control" name="categorie" id="">
+                                        
+                                </select>
                               </div>
                               <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
-                                <label for="">Adresse <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required placeholder="Entrer...">
+                                <label for="">Boutique<span class="text-danger">*</span></label>
+                                <select class="form-control" name="categorie" id="">
+                                        
+                                </select>
                               </div>
                               <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
-                                <label for="">Num Tel <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required placeholder="Entrer...">
+                                <label for="">Utilisateur<span class="text-danger">*</span></label>
+                                <select class="form-control" name="categorie" id="">
+                                        
+                                </select>
                               </div>
                             </div>
                            <p class="text-success text-center">
@@ -70,7 +76,7 @@ include 'index.php';
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Listes de Client</h5>
+                            <h5 class="card-title">Listes d'Approvisionnement</h5>
 
 
                             <!-- Table with stripped rows -->
@@ -78,12 +84,13 @@ include 'index.php';
                                 <thead>
                                     <tr>
                                         <th scope="col">N°</th>
-                                        <th scope="col">Nom</th>
-                                        <th scope="col">Postnom</th>
-                                        <th scope="col">Prenom</th>
-                                        <th scope="col">Genre</th>
-                                        <th scope="col">Adresse</th>
-                                        <th scope="col">Num Tel</th>
+                                        <th scope="col">Dates</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Quantite</th>
+                                        <th scope="col">Prix Unitaire</th>
+                                        <th scope="col">Stock Géneral</th>
+                                        <th scope="col">Boutique</th>
+                                        <th scope="col">Utilisateur</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,7 +102,7 @@ include 'index.php';
                                         <td>Brandon Jacob</td>
                                         <td>Designer</td>
                                         <td>28</td>
-
+                                        <td>28</td>
                                     </tr>
 
                                 </tbody>
