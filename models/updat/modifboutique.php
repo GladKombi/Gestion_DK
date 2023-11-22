@@ -1,7 +1,8 @@
 <?php
 include('../../connexion/connexion.php');
 #modification
-if(isset($_POST['modif'])){
+if(isset($_POST['valider'])){
+  $id=$_GET['idbout'];
   $nom=htmlspecialchars($_POST['nom']);
   $description=htmlspecialchars($_POST['description']);
   $adresse=htmlspecialchars($_POST['adresse']);

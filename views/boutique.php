@@ -4,9 +4,20 @@ include 'index.php';
 if (isset($_GET['idbout']))
 {
  $id=$_GET['idbout'];
- $req=$connexion->query("SELECT * FROM `utilisateur` WHERE id=$id");
+ $req=$connexion->query("SELECT * FROM boutique WHERE id=$id");
  $tab=$req->fetch();
 }
+
+ //  suppression une affectation 
+ if (isset($_GET['idSupcat']) && !empty($_GET['idSupcat'])) {
+    $id=$_GET['idSupcat'];
+    $supprimer=1;
+    $req=$connexion->query("UPDATE `boutique` SET supprimer='$supprimer' WHERE id=$id");
+    if($req){
+       header("Location:boutique.php");
+    }
+   
+  }
 ?>
 
 </head>
@@ -25,7 +36,14 @@ if (isset($_GET['idbout']))
             <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title text-center">AJouter une Boutique </h4>
+                    <?php if (isset($_GET['idbout'])) { ?>
+                            <h4 class="card-title text-center">Modifier Boutique </h4>
+                            <?php }
+                            else{  ?>
+                              <h4 class="card-title text-center">Ajouter Boutique </h4>
+                              <?php
+                            }
+                            ?>
                         <div class="modal modal-signin position-static d-block  py-1" tabindex="-1" role="dialog"
                                 id="modalSignin">
                             <div class="modal-dialog" role="document">
@@ -34,21 +52,26 @@ if (isset($_GET['idbout']))
                                         
                                     </div>
                                 <div class="modal-body p-5 pt-0">
-                                    <form class="row g-3 needs-validation" method="POST" novalidate>
+                                    <form class="row g-3 needs-validation" <?php if (isset($_GET['idbout'])) { ?>action="../models/updat/modifboutique.php?idbout=<?php echo $_GET['idbout']?>" 
+                          
+                          <?php }
+                             else{  ?> action="../models/add/ajoutboutique.php"   <?php
+                             }
+                             ?> method="POST" novalidate>
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control rounded-4" id="floatingInput"
-                                                        required name="nom">
+                                                        required name="nombout" <?php if (isset($_GET['idbout'])) { ?> value="<?php echo $tab['nombout']; ?> <?php }?>">
                                             <label for="floatingInput">Nom</label>
                                         </div>
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control rounded-4" id="floatingInput"
-                                                        required name="description">
+                                                        required name="description" <?php if (isset($_GET['idbout'])) { ?> value="<?php echo $tab['description']; ?> <?php }?>">
                                             <label for="floatingInput">Description</label>
                                         </div>
 
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control rounded-4" id="floatingInput"
-                                                        required name="adresse">
+                                                        required name="adresse" <?php if (isset($_GET['idbout'])) { ?> value="<?php echo $tab['adresse']; ?> <?php }?>">
                                             <label for="floatingInput">Adresse</label>
                                         </div>
 
@@ -65,8 +88,17 @@ if (isset($_GET['idbout']))
                                          
                                             </p>
 
-                                            <button class="w-100 mb-2 btn btn-lg rounded-5 btn-outline-primary" type="submit"
-                                                    name="valider"> Enregister</button> <br>
+                                            <?php if (isset($_GET['idbout'])) {  ?>
+  
+                                                     <button class="w-100 mb-2 btn btn-lg rounded-5 btn-outline-primary" type="submit"
+                                                                        name="valider"> Modifier</button> <br>
+                                                     <?php }
+                                                         else{  ?>
+                                                     <button class="w-100 mb-2 btn btn-lg rounded-5 btn-outline-primary" type="submit"
+                                                                        name="valider"> Enregister</button> <br>
+                                                          <?php
+                                                             }
+                                                           ?>
                                     </form>
                                 </div>
                             </div>
@@ -95,17 +127,17 @@ if (isset($_GET['idbout']))
                                 <tbody>
                                 <?php
                                 $n=0;
-                                $req=$connexion->query("SELECT * from boutique");
-                                while($bout=$req->fetch()){
+                                $req=$connexion->query("SELECT * from boutique WHERE supprimer=0");
+                                while($idbout=$req->fetch()){
                                     $n++;
                                 ?>
                             <tr>
                                 <th scope="row"><?= $n;?></th>
-                                <td> <?= $bout["nom"] ?></td> 
-                                <td> <?= $bout["description"] ?></td>
-                                <td> <?= $bout["adresse"] ?></td>
-                                <td><a href='boutique.php?edit_boutique=<?=$bout['id'] ?>' class='text-primary'><i class='bi-solid bi bi-pencil-square text-primary'></i></a>
-                                <a href='boutique.php?delete_boutique=<?=$bout['id'] ?>' type="button" 
+                                <td> <?= $idbout["nombout"] ?></td> 
+                                <td> <?= $idbout["description"] ?></td>
+                                <td> <?= $idbout["adresse"] ?></td>
+                                <td><a href='boutique.php?idbout=<?=$idbout['id'] ?>' class='text-primary'><i class='bi-solid bi bi-pencil-square text-primary'></i></a>
+                                <a onclick=" return confirm('Voulez-vous vraiment supprimer ?')" href='boutique.php?idSupcat=<?=$idbout['id'] ?>' type="button" 
                                 class="text-primary">
                                 <i class='bi-solid bi bi-trash text-primary'></i></a></td>                       
                                                             </tr>                

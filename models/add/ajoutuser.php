@@ -21,5 +21,4 @@ if(isset($_POST['valider'])){
           header("location:../../views/users.php");
       }
 }
-
 ?>

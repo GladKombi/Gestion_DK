@@ -7,7 +7,18 @@ include 'index.php';
   $req=$connexion->query("SELECT * FROM `utilisateur` WHERE id=$id");
   $tab=$req->fetch();
  }
-?> 
+
+  //  suppression une affectation 
+  if (isset($_GET['idSupcat']) && !empty($_GET['idSupcat'])) {
+    $id=$_GET['idSupcat'];
+    $supprimer=1;
+    $req=$connexion->query("UPDATE `utilisateur` SET supprimer='$supprimer' WHERE id=$id");
+    if($req){
+       header("Location:users.php");
+    }
+   
+  }
+?>  
 <main id="main" class="main">
         <section class="section">
         <main class="main-content position-relative border-radius-lg ">
@@ -46,8 +57,8 @@ include 'index.php';
                               <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
                                 <label for="">Genre<span class="text-danger">*</span></label>
                                 <select class="form-control" name="genre" id=""<?php if (isset($_GET['iduser'])) { ?> value="<?php echo $tab['genre']; ?> <?php }?>">
-                                  <option value="">G</option>
-                                  <option value="">F</option>
+                                      <option >M</option>
+                                      <option >F</option>
                                 </select>
                               </div>
                               <div class="col-xl-6 clo-lg-6 col-md-6 mt-4 col-sm-6">
@@ -78,7 +89,7 @@ include 'index.php';
                                       
                                       <option  value="<?php echo $tab['id']; ?>">
 
-                                          <?php echo $tab['nom']."  ". $tab['description']; ?>
+                                          <?php echo $tab['nombout']."  ". $tab['description']; ?>
                                               
                                           </option>
                                       <?php 
@@ -149,7 +160,7 @@ include 'index.php';
                                 <tbody>
                                 <?php
                                 $n=0;
-                                $req=$connexion->query("SELECT * from utilisateur");
+                                $req=$connexion->query("SELECT utilisateur. `nom`, utilisateur.`postnom`, utilisateur.`prenom`, utilisateur.`genre`, utilisateur.`adresse`, utilisateur.`telephone`, utilisateur.`email`, boutique.nombout,boutique.description FROM `utilisateur`,boutique WHERE utilisateur.boutique=boutique.id AND utilisateur.supprimer=0");
                                 while($iduser=$req->fetch()){
                                     $n++;
                                 ?>
@@ -162,10 +173,10 @@ include 'index.php';
                                 <td> <?= $iduser["adresse"] ?></td>
                                 <td> <?= $iduser["telephone"] ?></td>
                                 <td> <?= $iduser["email"] ?></td> 
-                                <td> <?= $iduser["boutique"] ?></td>
+                                <td> <?= $iduser['nombout']."  ". $iduser['description'] ?></td>
                               
                                 <td><a href='users.php?iduser=<?=$iduser['id'] ?>' class='text-primary'><i class='bi-solid bi bi-pencil-square text-primary'></i></a>
-                                <a href='boutique.php?delete_boutique=<?=$iduser['id'] ?>' type="button" 
+                                <a onclick=" return confirm('Voulez-vous vraiment supprimer ?')" href='users.php?idSupcat=<?=$iduser['id'] ?>' type="button" 
                                 class="text-primary">
                                 <i class='bi-solid bi bi-trash text-primary'></i></a></td>                       
                                                             </tr>                
